@@ -1,8 +1,8 @@
 language: r
 cache: packages
 
-after_success:
-- Rscript -e "remotes::install_github('fvitalini/PoCbookdownPkg')"
+before_deploy:
+- R CMD INSTALL $PKG_TARBALL
 - Rscript -e "PoCbookdownPkg::render_site()"
 
 deploy:
